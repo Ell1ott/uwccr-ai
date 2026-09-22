@@ -1,0 +1,389 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
+@import "sonner/dist/styles.css";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-on-secondary-fixed-variant: #38485d;
+  --color-surface-dim: oklch(0.96 0 0);
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d0e1fb;
+  --color-tertiary-container: #38260b;
+  --color-on-surface-variant: #44474c;
+  --color-inverse-on-surface: #f2f0f2;
+  --color-on-error: #ffffff;
+  --color-surface-container-highest: #e4e2e3;
+  --color-on-secondary-fixed: #0b1c30;
+  --color-surface-container-high: #e9e7e9;
+  --color-on-tertiary-fixed-variant: #584326;
+  --color-on-error-container: #93000a;
+  --color-surface: #fbf9fa;
+  --color-primary-fixed-dim: #b7c8de;
+  --color-primary-container: #1a2b3c;
+  --color-surface-bright: #fbf9fa;
+  --color-secondary-fixed: #d3e4fe;
+  --color-primary: #041627;
+  --color-surface-container-lowest: #ffffff;
+  --color-error: #ba1a1a;
+  --color-inverse-primary: #b7c8de;
+  --color-on-primary-fixed: #0b1d2d;
+  --color-surface-container: #efedef;
+  --color-on-primary-fixed-variant: #38485a;
+  --color-on-background: #1b1c1d;
+  --color-secondary-fixed-dim: #b7c8e1;
+  --color-error-container: #ffdad6;
+  --color-tertiary-fixed-dim: #e1c29b;
+  --color-on-surface: #1b1c1d;
+  --color-on-tertiary-container: #a88c69;
+  --color-on-tertiary-fixed: #281802;
+  --color-surface-container-low: #f5f3f4;
+  --color-tertiary-fixed: #feddb5;
+  --color-surface-tint: #4f6073;
+  --color-inverse-surface: #303032;
+  --color-surface-variant: #e4e2e3;
+  --color-on-secondary-container: #54647a;
+  --color-tertiary: #211200;
+  --color-on-primary-container: #8192a7;
+  --color-outline-variant: #c4c6cd;
+  --color-background: #fbf9fa;
+  --color-secondary: #505f76;
+  --color-outline: #74777d;
+  --color-on-primary: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-primary-fixed: #d2e4fb;
+
+  --spacing-item-gap: 12px;
+  --spacing-container-padding-mobile: 16px;
+  --spacing-section-margin: 24px;
+  --spacing-container-padding-desktop: 16px;
+
+  --text-title-md: 18px;
+  --text-title-md--line-height: 24px;
+  --text-title-md--font-weight: 600;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+  --text-time-stamp: 14px;
+  --text-time-stamp--line-height: 20px;
+  --text-time-stamp--font-weight: 600;
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.05em;
+  --text-label-sm--font-weight: 500;
+  --text-headline-lg-mobile: 24px;
+  --text-headline-lg-mobile--line-height: 32px;
+  --text-headline-lg-mobile--letter-spacing: -0.01em;
+  --text-headline-lg-mobile--font-weight: 700;
+  --text-answer-lead: 20px;
+  --text-answer-lead--line-height: 28px;
+  --text-answer-lead--letter-spacing: -0.018em;
+  --text-answer-lead--font-weight: 600;
+}
+
+@layer base {
+  html {
+    overscroll-behavior-y: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface-dim font-sans text-on-surface antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  input:where(
+    :not(
+      [type="button"],
+      [type="checkbox"],
+      [type="color"],
+      [type="file"],
+      [type="hidden"],
+      [type="image"],
+      [type="radio"],
+      [type="range"],
+      [type="reset"],
+      [type="submit"]
+    )
+  ),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@keyframes sheet-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sheet-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.answer-prose {
+  color: var(--color-on-surface);
+  font-size: var(--text-body-md);
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.answer-prose > p,
+.answer-prose > ul,
+.answer-prose > ol,
+.answer-prose > h2,
+.answer-prose > h3,
+.answer-prose > blockquote {
+  margin: 0.9em 0 0;
+}
+
+.answer-prose > :first-child {
+  margin-top: 0;
+}
+
+.answer-prose > p:first-child {
+  font-size: var(--text-answer-lead);
+  font-weight: var(--text-answer-lead--font-weight);
+  letter-spacing: var(--text-answer-lead--letter-spacing);
+  line-height: var(--text-answer-lead--line-height);
+}
+
+.answer-prose p > strong:first-child {
+  font-size: 1.05em;
+  font-weight: 650;
+  letter-spacing: -0.012em;
+}
+
+.answer-prose h2 {
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 24px;
+}
+
+.answer-prose h3 {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 22px;
+}
+
+.answer-prose ul,
+.answer-prose ol {
+  padding-left: 1.2em;
+}
+
+.answer-prose li {
+  padding-left: 0.25em;
+}
+
+.answer-prose li + li {
+  margin-top: 0.4em;
+}
+
+.answer-prose li::marker {
+  color: var(--color-secondary);
+}
+
+.answer-prose a:not(.cite-chip) {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.answer-caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.05em;
+  margin-left: 2px;
+  background: var(--color-on-surface);
+  vertical-align: text-bottom;
+}
+
+.cite-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin: 0 0.12em;
+  padding: 1px 7px 1px 5px;
+  border-radius: 999px;
+  background: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 18px;
+  text-decoration: none;
+  vertical-align: 2px;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.cite-chip:hover,
+.cite-chip:focus-visible {
+  background: var(--color-secondary-fixed-dim);
+  color: var(--color-on-secondary-fixed);
+  outline: none;
+}
+
+.cite-chip-active,
+.cite-chip-active:hover,
+.cite-chip-active:focus-visible {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.cite-chip:focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 20%, transparent);
+}
+
+.cite-tooltip {
+  position: fixed;
+  z-index: 80;
+  display: flex;
+  width: min(280px, calc(100vw - 32px));
+  transform: translate(-50%, -100%);
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--color-surface-container-lowest);
+  box-shadow: 0 12px 36px rgba(4, 22, 39, 0.14);
+  color: var(--color-on-surface);
+  pointer-events: none;
+}
+
+.cite-tooltip-below {
+  transform: translate(-50%, 0);
+}
+
+.cite-tooltip-quote {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 18px;
+  color: var(--color-on-surface);
+}
+
+.cite-tooltip-meta {
+  font-size: var(--text-label-sm);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: var(--text-label-sm--line-height);
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+}
+
+.handbook-pdf {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  background: var(--color-surface-container-low);
+}
+
+.handbook-pdf .PdfHighlighter {
+  background: var(--color-surface-container-low);
+}
+
+.handbook-pdf .page {
+  margin: 16px auto !important;
+  background: #fff;
+  box-shadow: 0 10px 36px rgba(4, 22, 39, 0.08);
+}
+
+/* Highlighter CSS makes the PDF.js text layer visible and `display: flex`,
+   which paints a second, misaligned copy of the page on top of the canvas. */
+.handbook-pdf .textLayer {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  line-height: 1;
+}
+
+.handbook-pdf .textLayer :is(span, br) {
+  color: transparent !important;
+  position: absolute !important;
+  white-space: pre !important;
+  background: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.handbook-pdf .annotationEditorLayer,
+.handbook-pdf .editToolbar,
+.handbook-pdf .TextHighlight__toolbar {
+  display: none !important;
+}
+
+.handbook-pdf .PdfHighlighter__highlight-layer {
+  mix-blend-mode: multiply;
+}
+
+.handbook-pdf .TextHighlight__part {
+  border-radius: 2px;
+  background: rgb(255 196 0 / 0.42);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
