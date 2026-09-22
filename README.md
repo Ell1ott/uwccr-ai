@@ -7,7 +7,7 @@ Students sign in with their school Google account (same `uwccr` Supabase project
 - **Site:** Vite + React, Google login, chat
 - **Embed:** Supabase Edge `gte-small`
 - **Store:** hosted Supabase pgvector + `conversations` / `messages`
-- **Generate:** OpenRouter `deepseek/deepseek-v4-flash-0731:free`
+- **Generate:** OpenRouter [`qwen/qwen3.8-27b:free`](https://openrouter.ai/qwen/qwen3.8-27b:free)
 
 ## Prerequisites
 
@@ -96,7 +96,7 @@ Response shape:
 }
 ```
 
-Pass `conversation_id` on follow-ups to keep the thread. If the free Flash endpoint is rate-limited, set `CHAT_MODEL=deepseek/deepseek-flash-latest` as a project secret.
+Pass `conversation_id` on follow-ups to keep the thread. Override the model with `CHAT_MODEL` (e.g. `supabase secrets set CHAT_MODEL=…`) if you hit rate limits.
 
 ## Layout
 

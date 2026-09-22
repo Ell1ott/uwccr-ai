@@ -108,7 +108,7 @@ Deno.serve(async (req) => {
   const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
   const openrouterKey = Deno.env.get("OPENROUTER_API_KEY");
   const chatModel = Deno.env.get("CHAT_MODEL") ??
-    "deepseek/deepseek-v4-flash-0731:free";
+    "qwen/qwen3.8-27b:free";
 
   if (!supabaseUrl || !serviceRoleKey) {
     return json({ error: "Supabase env is not configured" }, 500);
