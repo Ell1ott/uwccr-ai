@@ -58,7 +58,7 @@ function DesktopPane({
       transition={{ duration: 0.22, ease: "easeOut" }}
       className="flex h-full min-w-0 w-[min(48vw,560px)] shrink-0 flex-col border-l border-outline-variant/50 bg-surface"
     >
-      <PaneHeader page={page} excerpt={excerpt} onClose={onClose} />
+      <PaneHeader page={page} onClose={onClose} />
       <HandbookPdf page={page} excerpt={excerpt} />
     </motion.aside>
   );
@@ -81,7 +81,7 @@ function MobilePane({
       transition={{ duration: 0.2, ease: "easeOut" }}
       className="fixed inset-0 z-[85] flex flex-col bg-surface"
     >
-      <PaneHeader page={page} excerpt={excerpt} onClose={onClose} />
+      <PaneHeader page={page} onClose={onClose} />
       <HandbookPdf page={page} excerpt={excerpt} />
     </motion.div>
   );
@@ -89,11 +89,9 @@ function MobilePane({
 
 function PaneHeader({
   page,
-  excerpt,
   onClose,
 }: {
   page: number;
-  excerpt: string | null;
   onClose: () => void;
 }) {
   return (
